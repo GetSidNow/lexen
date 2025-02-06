@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lexen Hotel – North Hollywood Universal Studios</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="https://hk-public-images.s3.amazonaws.com/uploads/other/1c0fbe31-3847-47e8-bfbd-ec8b13cc0ae6.jpg" />
+  <!-- Google Font: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet" />
+  <!-- Animate.css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      /* Brand Colors:
+         Background: #fafafa
+         Text: #000000
+         Accent/Button: #89c23e */
+      --bg-color: #fafafa;
+      --text-color: #000000;
+      --accent-color: #89c23e;
+    }
+    /* Base Styles */
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+    }
+    /* Elevated Card Styles */
+    .card {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -15px var(--accent-color);
+    }
+    /* Tab Navigation Styles */
+    .tab {
+      background-color: transparent;
+      color: var(--text-color);
+      border: none;
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+    .tab.active {
+      color: var(--accent-color);
+      border-bottom: 3px solid var(--accent-color);
+    }
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .accent {
+      color: var(--accent-color);
+    }
+    .icon {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent-color);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+  <!-- Fixed Top Bar -->
+  <div class="fixed top-0 left-0 right-0 bg-white z-50 p-4 text-center border-b" style="border-color: var(--accent-color);">
+    <h1 class="text-2xl font-bold" style="color: var(--text-color);">Lexen Hotel – North Hollywood Universal Studios</h1>
+    <p class="text-sm" style="color: var(--text-color);">Guest Guide Book</p>
+  </div>
+  
+  <!-- Main Container -->
+  <div class="max-w-4xl mx-auto pt-20">
+    <!-- Header Section with Contact Buttons -->
+    <header class="text-center mb-10 animate__animated animate__fadeIn">
+      <div class="flex flex-row justify-center items-center gap-4 mb-6 overflow-x-auto">
+        <a href="sms:+18188539462" class="inline-block font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
+          Text us
+        </a>
+        <a href="tel:+18188213680" class="inline-block font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
+          Call us
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=5268+Tujunga+Ave,+North+Hollywood,+CA+91601" target="_blank" class="inline-block font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
+          Direction
+        </a>
+      </div>
+      <p class="text-lg">Welcome to Lexen Hotel – your gateway to North Hollywood and Universal Studios!</p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="relative mb-8">
+      <!-- Left Arrow -->
+      <button onclick="scrollNav(-100)" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full shadow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" style="color: var(--accent-color);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <!-- Tab Bar -->
+      <nav id="navBar" class="flex overflow-x-auto border-b" style="border-color: #ddd;">
+        <button class="tab active" onclick="switchTab('welcome')">Welcome Home</button>
+        <button class="tab" onclick="switchTab('policies')">House Rules</button>
+        <button class="tab" onclick="switchTab('amenities')">Our Amenities</button>
+        <button class="tab" onclick="switchTab('dining')">Eat & Drink</button>
+        <button class="tab" onclick="switchTab('area')">Explore Local</button>
+        <button class="tab" onclick="switchTab('bookdirect')">🎉 Book Direct & Save</button>
+        <button class="tab" onclick="switchTab('feedback')">Share Your Thoughts</button>
+      </nav>
+      
+      <!-- Right Arrow -->
+      <button onclick="scrollNav(100)" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-50 p-2 rounded-full shadow">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" style="color: var(--accent-color);" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="space-y-12">
+      <!-- Welcome Section -->
+      <div id="welcome" class="tab-content active">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Wi‑Fi Card -->
+          <div class="card p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <svg class="icon mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"/>
+              </svg>
+              <h3 class="text-xl font-semibold">Wi‑Fi Access</h3>
+            </div>
+            <p class="text-sm text-gray-600">Network: <span class="font-semibold">LexenHotel_WiFi</span></p>
+            <p class="text-sm text-gray-600">Password: <span class="font-semibold">Universal123</span></p>
+            <a id="wifiConnect" href="#" class="inline-block mt-4 font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
+              Connect Now
+            </a>
+          </div>
+          <!-- Check-in/out Card -->
+          <div class="card p-6 rounded-lg">
+            <div class="flex items-center mb-4">
+              <svg class="icon mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <h3 class="text-xl font-semibold">Check‑in/out</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-2">Check‑in: 3:00 PM</p>
+            <p class="text-sm text-gray-600">Check‑out: 11:00 AM</p>
+            <p class="text-sm text-gray-600 mt-2">Early check-in available for $35.00 (if before 2:00 PM, subject to availability).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- House Rules Section -->
+      <div id="policies" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 accent">House Rules</h3>
+          <ul class="space-y-4">
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              100% smoke‑free property
+            </li>
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Pet‑free facility
+            </li>
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              Valid ID and credit card required at check‑in
+            </li>
+            <li class="flex items-start">
+              <svg class="icon mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>
+                A <strong>$100.00 room deposit</strong> is required upon check-in for incidentals.
+              </span>
+            </li>
+            <li class="flex items-start">
+              <svg class="icon mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>
+                Early check-in is available for <strong>$35.00</strong> if needed before 2:00 PM (subject to availability).
+              </span>
+            </li>
+            <li class="flex items-start">
+              <svg class="icon mr-3 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>
+                The office is open until 9:00 PM. For after-hours check-in, please text or call us.
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Amenities Section -->
+      <div id="amenities" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 accent">Hotel Amenities</h3>
+          <ul class="space-y-4">
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M5 13l4 4L19 7"/>
+              </svg>
+              Free self‑parking
+            </li>
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M5 13l4 4L19 7"/>
+              </svg>
+              High‑speed Wi‑Fi
+            </li>
+            <li class="flex items-center">
+              <svg class="icon mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                      d="M5 13l4 4L19 7"/>
+              </svg>
+              24/7 Front Desk
+            </li>
+          </ul>
+          <div class="mt-6">
+            <h4 class="text-lg font-semibold accent mb-2">Add-ons</h4>
+            <ul class="list-disc list-inside">
+              <li>Extra car: $20 plus tax</li>
+              <li>Parking after checkout: $20 plus tax</li>
+              <li>Rollaway bed: $20 plus tax</li>
+              <li>Late check‑out (12pm to 2pm): $25 plus tax</li>
+            </ul>
+          </div>
+          <p class="mt-4 text-sm text-gray-600">
+            Please know that our pool is closed for remodeling until further notice.
+          </p>
+        </div>
+      </div>
+
+      <!-- Dining Section -->
+      <div id="dining" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 accent">Dining Options</h3>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-medium mb-2">Breakfast</h4>
+              <p class="text-sm">Continental breakfast served daily 6:30 AM - 9:30 AM</p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Bars</h4>
+              <p class="text-sm">
+                Discover the best bars in the area for an exciting nightlife experience.
+                <a href="https://www.google.com/maps/search/?api=1&query=Bars+North+Hollywood" target="_blank" class="hover:underline">
+                  View on Map
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Restaurants</h4>
+              <p class="text-sm">
+                Explore a variety of restaurants offering local and international cuisines.
+                <a href="https://www.google.com/maps/search/?api=1&query=Restaurants+North+Hollywood" target="_blank" class="hover:underline">
+                  View on Map
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Brunch Spots</h4>
+              <p class="text-sm">
+                Check out the top brunch spots for a delightful mid‑morning meal.
+                <a href="https://www.google.com/maps/search/?api=1&query=Brunch+North+Hollywood" target="_blank" class="hover:underline">
+                  View on Map
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Cafés</h4>
+              <p class="text-sm">
+                Relax in charming cafés around the area.
+                <a href="https://www.google.com/maps/search/?api=1&query=Cafés+North+Hollywood" target="_blank" class="hover:underline">
+                  View on Map
+                </a>
+              </p>
+            </div>
+            <div>
+              <h4 class="font-medium mb-2">Additional Services</h4>
+              <p class="text-sm">24/7 coffee and tea in lobby</p>
+              <p class="text-sm">Local restaurant delivery available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explore Local / Area Guide Section with Updated, Relevant Details -->
+      <div id="area" class="tab-content">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Universal Studios Hollywood -->
+          <div class="card p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 accent">
+              <a href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Hollywood" target="_blank" class="hover:underline">
+                Universal Studios Hollywood
+              </a>
+            </h3>
+            <p class="text-sm mb-2">Experience blockbuster attractions, thrilling rides, and behind-the-scenes tours.</p>
+            <p class="text-sm">Approx. 10 minutes drive.</p>
+          </div>
+          <!-- Hollywood Walk of Fame -->
+          <div class="card p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 accent">
+              <a href="https://www.google.com/maps/search/?api=1&query=Hollywood+Walk+of+Fame" target="_blank" class="hover:underline">
+                Hollywood Walk of Fame
+              </a>
+            </h3>
+            <p class="text-sm mb-2">Stroll among iconic stars on Hollywood Boulevard.</p>
+            <p class="text-sm">Approx. 15 minutes drive.</p>
+          </div>
+          <!-- North Hollywood Arts District -->
+          <div class="card p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 accent">
+              <a href="https://www.google.com/maps/search/?api=1&query=North+Hollywood+Arts+District" target="_blank" class="hover:underline">
+                North Hollywood Arts District
+              </a>
+            </h3>
+            <p class="text-sm mb-2">Explore a vibrant arts scene with indie theaters, galleries, and trendy dining.</p>
+            <p class="text-sm">Approx. 5 minutes drive.</p>
+          </div>
+          <!-- Universal CityWalk -->
+          <div class="card p-6 rounded-lg">
+            <h3 class="text-xl font-semibold mb-4 accent">
+              <a href="https://www.google.com/maps/search/?api=1&query=Universal+CityWalk" target="_blank" class="hover:underline">
+                Universal CityWalk
+              </a>
+            </h3>
+            <p class="text-sm mb-2">Enjoy lively entertainment, shopping, and dining next to Universal Studios.</p>
+            <p class="text-sm">Approx. 10 minutes drive.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book Direct & Save Section -->
+      <div id="bookdirect" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 accent">🎉 Book Direct & Save</h3>
+          <p class="mb-4 text-sm">
+            Enjoy our best available rates when you book directly with us. Next time you plan a visit, simply call or text us – or check our website for the latest offers.
+          </p>
+          <a href="https://www.lexennoho.com/#/" target="_blank" class="inline-block font-bold py-2 px-4 rounded-full" style="background-color: var(--accent-color); color: #ffffff;">
+            Book Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Share Your Thoughts Section -->
+      <div id="feedback" class="tab-content">
+        <div class="card p-6 rounded-lg">
+          <h3 class="text-xl font-semibold mb-4 accent">✨ Share Your Experience</h3>
+          <div class="w-full h-screen max-h-[800px] overflow-hidden rounded-lg">
+            <iframe
+              src="https://feedback.guesttouch.com/5bae76a54ea7720f4523e1f3/write"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              style="background-color: var(--bg-color);"
+              title="Feedback Form">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- JavaScript -->
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
+  
+      document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
+    
+    function scrollNav(amount) {
+      const navBar = document.getElementById("navBar");
+      navBar.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+    
+    document.addEventListener("DOMContentLoaded", function() {
+      const wifiButton = document.getElementById("wifiConnect");
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+        wifiButton.href = "App-Prefs:root=WIFI";
+      } else if (navigator.userAgent.match(/Android/i)) {
+        wifiButton.href = "intent://settings#Intent;action=android.settings.WIFI_SETTINGS;end";
+      } else {
+        wifiButton.href = "#";
+      }
+    });
+  </script>
+</body>
+</html>
